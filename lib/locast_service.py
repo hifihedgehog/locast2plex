@@ -79,18 +79,6 @@ class LocastService:
         userOpn.close()
 
         print("User Info obtained.")
-        print("User didDonate: {}".format(userRes['didDonate']))
-        # Check if the user has donated, and we got an actual expiration date.
-        if userRes['didDonate'] and userRes['donationExpire']:
-            # Check if donation has expired.
-            donateExp = datetime.fromtimestamp(userRes['donationExpire'] / 1000)
-            print("User donationExpire: {}".format(donateExp))
-            if datetime.now() > donateExp:
-                print("Error!  User's donation ad-free period has expired.")
-                return False
-        else:
-            print("Error!  User must donate for this to work.")
-            return False
 
         return True
 
